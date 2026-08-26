@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# ReelGeek working files
+*.mp4
+*.wav
+*.zip
+prep_*/
+uploads/
+work/
+out/
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
