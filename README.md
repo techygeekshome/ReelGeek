@@ -1,4 +1,22 @@
+<div align="center">
+
+<img src="icons/reelgeek.png" alt="ReelGeek logo" width="96" height="96">
+
 # ReelGeek
+
+**Turn a pile of photos into a vertical edit — cuts on the beat, real camera moves, ready for TikTok and Shorts.**
+
+[![Status](https://img.shields.io/badge/status-in%20development-b7791f)](https://github.com/techygeekshome/ReelGeek)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-0078d4)](#getting-it-running)
+[![Python](https://img.shields.io/badge/Python-3.9%2B-3fca86)](https://www.python.org/downloads/)
+[![Made by TechyGeeksHome](https://img.shields.io/badge/made%20by-TechyGeeksHome-b191f2)](https://techygeekshome.info)
+[![Support on Ko-fi](https://img.shields.io/badge/support-Ko--fi-ff5e5b)](https://ko-fi.com/techygeekshome)
+
+[Getting started](#getting-it-running) · [Using it](#using-it) · [The styles](#the-styles) · [Command line](#command-line) · [How it works](#how-it-works)
+
+</div>
+
+---
 
 Turn a pile of photos into a vertical **edit** — not a slideshow. Cuts land on a
 tempo grid, the camera moves on every shot, and the transitions are the ones
@@ -161,3 +179,21 @@ format with a hook in the right place. It cannot manufacture reach. What
 actually moves the numbers is the strength of your photos, the hook, posting
 consistently, and using sounds while they're still climbing. The edit is the
 part you can automate — the rest is still on you.
+
+## Support
+
+Found a bug or have a request? [Open an issue](https://github.com/techygeekshome/ReelGeek/issues) or [get in touch](https://techygeekshome.info/contact/).
+
+## Status and licence
+
+ReelGeek is in development and has not had a public release yet, so there is no version number to quote and no download to point at. A licence file will be added before the first release.
+
+---
+
+<div align="center">
+
+Made with ❤️ by [**TechyGeeksHome**](https://techygeekshome.info)
+
+[Website](https://techygeekshome.info) · [YouTube](https://www.youtube.com/channel/UCtEuFj1SMLiuRoucD1hv8dA) · [X](https://x.com/TechyGeeks1) · [Facebook](https://www.facebook.com/techygeeks.home) · [Instagram](https://www.instagram.com/andrewarmstrongtgh/)
+
+</div>
