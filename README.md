@@ -186,7 +186,7 @@ Found a bug or have a request? [Open an issue](https://github.com/techygeekshome
 
 ## Status and licence
 
-ReelGeek is in development and has not had a public release yet, so there is no version number to quote and no download to point at. A licence file will be added before the first release.
+ReelGeek is in development and has not had a public release yet, so there is no version number to quote and no download to point at. It is released under the GNU General Public License v3.0 — the full text is in [LICENSE](LICENSE).
 
 ---
 
