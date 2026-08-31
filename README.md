@@ -4,76 +4,98 @@
 
 # ReelGeek
 
-**Turn a pile of photos into a vertical edit — cuts on the beat, real camera moves, ready for TikTok and Shorts.**
+**Turn a pile of photos into a vertical edit. Cuts on the beat, real camera moves, ready for TikTok and Shorts.**
 
-[![Status](https://img.shields.io/badge/status-in%20development-b7791f)](https://github.com/techygeekshome/ReelGeek)
-[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-0078d4)](#getting-it-running)
-[![Python](https://img.shields.io/badge/Python-3.9%2B-3fca86)](https://www.python.org/downloads/)
+[![Build](https://github.com/techygeekshome/ReelGeek/actions/workflows/build-windows.yml/badge.svg)](https://github.com/techygeekshome/ReelGeek/actions/workflows/build-windows.yml)
+[![Version](https://img.shields.io/github/v/release/techygeekshome/ReelGeek?label=version&color=4c9bff)](https://github.com/techygeekshome/ReelGeek/releases)
+[![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078d4)](#download--run)
+[![License](https://img.shields.io/badge/License-GPL--3.0-blue)](LICENSE)
 [![Made by TechyGeeksHome](https://img.shields.io/badge/made%20by-TechyGeeksHome-b191f2)](https://techygeekshome.info)
 [![Support on Ko-fi](https://img.shields.io/badge/support-Ko--fi-ff5e5b)](https://ko-fi.com/techygeekshome)
 
-[Getting started](#getting-it-running) · [Using it](#using-it) · [The styles](#the-styles) · [Command line](#command-line) · [How it works](#how-it-works)
+[Download](#download--run) · [Using it](#using-it) · [The styles](#the-styles) · [Command line](#command-line) · [How it works](#how-it-works)
 
 </div>
 
 ---
 
-Turn a pile of photos into a vertical **edit** — not a slideshow. Cuts land on a
-tempo grid, the camera moves on every shot, and the transitions are the ones
-short-form editors actually use: whip pans with real motion blur, snap zooms,
-flash frames, RGB-split glitches, hard cuts on the beat.
+## What it refuses to do
 
-Output is **1080 × 1920 H.264 MP4**, which uploads as-is to TikTok and YouTube
-Shorts.
+* **No account.** There is nothing to sign up for and nothing to log in to.
+* **No upload.** Your photos are read from your disk and rendered on your CPU. They are never sent anywhere, and neither are your finished videos.
+* **No posting on your behalf.** ReelGeek makes the file. You post it.
+* **No telemetry.** Nothing is counted, timed or reported back.
+* **No watermark, no export limit, no paid tier.** The whole thing is free.
+* **No bundled extras.** The installer contains the app and ffmpeg. Nothing else.
+
+The only outbound request the app ever makes is the update check, and only when you press the button.
 
 ---
 
-## Getting it running
+## What it does
 
-You need two things installed: **Python 3.9+** and **ffmpeg**.
+Turns a folder of photos into a vertical **edit**, not a slideshow. Cuts land on a tempo grid, the camera moves on every shot, and the transitions are the ones short-form editors actually use: whip pans with real motion blur, snap zooms, flash frames, RGB-split glitches, hard cuts on the beat.
 
-| | Python | ffmpeg |
-|---|---|---|
-| **macOS** | [python.org/downloads](https://www.python.org/downloads/) | `brew install ffmpeg` |
-| **Windows** | [python.org/downloads](https://www.python.org/downloads/) — tick *"Add Python to PATH"* | `winget install Gyan.FFmpeg` |
-| **Linux** | usually already there | `sudo apt install ffmpeg` |
+Output is **1080 x 1920 H.264 MP4**, which uploads as-is to TikTok and YouTube Shorts.
 
-Then:
+### Where 1.0 stops
 
-* **macOS / Linux** — double-click `run.command` (or `./run.sh` in a terminal)
-* **Windows** — double-click `run.bat`
+* Photos in, video out. It does not edit existing video clips.
+* No music is baked in. That is deliberate, and explained under [the settings that matter](#the-settings-that-matter).
+* One reel at a time. There is no batch mode yet.
 
-It installs the two Python libraries it needs, starts a small local server and
-opens the app in your browser. Nothing is uploaded anywhere — the server binds
-to `127.0.0.1`, so it is only reachable from your own machine.
+---
 
-**Finished videos go to your Downloads folder.** Change that any time with the
-**Save videos to** box in the app — type or paste a path, hit Save, and it
-sticks for future sessions. Clear the box and save to go back to Downloads. On
-Windows the real Downloads location is read from the system, so a Downloads
-folder you have moved to another drive is still found correctly.
+## Screenshots
+
+![The main window](docs/screenshots/01-main.png)
+
+| | |
+| --- | --- |
+| ![Photos, in edit order](docs/screenshots/02-photos.png) | ![The five styles](docs/screenshots/03-styles.png) |
+| ![Settings](docs/screenshots/04-settings.png) | ![About](docs/screenshots/05-about.png) |
+
+Screenshots show the real interface. The photos in them are generated placeholders, not anyone's holiday snaps.
+
+---
+
+## Download & run
+
+**[Download ReelGeek](https://github.com/techygeekshome/ReelGeek/releases/latest)** for Windows 10 or 11, 64-bit.
+
+| File | What it is | Size |
+| --- | --- | --- |
+| `ReelGeekSetup.exe` | Installer. Start-menu entry, uninstalls cleanly. | 47.5 MB |
+
+Nothing else needs installing. Python and ffmpeg are both inside the bundle, so there are no prerequisites to chase.
+
+To verify what you downloaded, in PowerShell:
+
+```powershell
+Get-FileHash .\ReelGeekSetup.exe -Algorithm SHA256
+```
+
+and compare it against the checksum on the release page.
+
+> **First run:** Windows may show a blue *"Windows protected your PC"* box. That is SmartScreen reacting to an executable it has not seen before, not a detection. ReelGeek is not code-signed, because a certificate costs more per year than this whole range earns. Click **More info**, then **Run anyway**. The source is right here if you would rather build it yourself.
 
 ---
 
 ## Using it
 
-1. **Drop your photos in.** Any number. Drag the thumbnails to reorder — the
-   order they sit in is the order they appear.
+1. **Drop your photos in.** Any number. Drag the thumbnails to reorder. The order they sit in is the order they appear.
 2. **Pick a style.** Five of them, described below.
-3. **Type a hook.** The first second is the whole game on short-form. Something
-   that has to be resolved — *"POV: you found the one"*, *"nobody tells you this
-   about…"*, *"3 months of progress"*.
-4. **Quick preview** renders a fast, low-res draft so you can judge the rhythm
-   in a few seconds. **Render HD** does the real thing.
-5. **Re-roll ⟳** keeps your photos and style but rolls a new edit — different
-   motions, different transitions, different cut placement. Do this three or
-   four times and keep the best one. It costs you nothing.
+3. **Type a hook.** The first second is the whole game on short-form. Something that has to be resolved: *"POV: you found the one"*, *"nobody tells you this about..."*, *"3 months of progress"*.
+4. **Quick preview** renders a fast, low-res draft so you can judge the rhythm in a few seconds. **Render HD** does the real thing.
+5. **Re-roll** keeps your photos and style but rolls a new edit: different motions, different transitions, different cut placement. Do this three or four times and keep the best one. It costs you nothing.
 
-### The styles
+---
+
+## The styles
 
 | Style | What it is |
 |---|---|
-| **Hype** | Fast and aggressive. Flash and glitch hits, punch zooms, hard cuts. The default fashion/lifestyle look. |
+| **Hype** | Fast and aggressive. Flash and glitch hits, punch zooms, hard cuts. The default fashion and lifestyle look. |
 | **Clean** | Modern and minimal. Crisp cuts, decisive slides, no gimmicks. Reads expensive rather than loud. |
 | **Soft** | Dreamy. Long drifting pushes, gentle dissolves, faded film grade. Golden hour, portraits. |
 | **VHS** | Retro camcorder. Heavy grain, colour bleed, glitch cuts, warm tape grade. |
@@ -81,33 +103,20 @@ folder you have moved to another drive is still found correctly.
 
 ### The settings that matter
 
-* **Length** — *Auto* lets the style pick its own runtime. With 30 photos that's
-  about 14s on Hype and closer to a minute on Luxe. Pin it to 15/20/30s if you
-  want a specific length; the whole rhythm is scaled to fit.
-* **Pace** — multiplies every shot length without changing the tempo grid.
-* **Tempo (BPM)** — set this to match the track you plan to add in TikTok and
-  the cuts will land on its beat. Leave blank to use the style's own tempo.
-* **Wide photos** — *Fill frame* crops landscape shots to vertical and pans the
-  camera across them, which is what an editor would do. *Show all* puts the
-  whole photo on a blurred backdrop of itself, losing nothing but reading more
-  like a slideshow.
+* **Length.** *Auto* lets the style pick its own runtime. With 30 photos that is about 14s on Hype and closer to a minute on Luxe. Pin it to 15, 20 or 30s if you want a specific length and the whole rhythm is scaled to fit.
+* **Pace.** Multiplies every shot length without changing the tempo grid.
+* **Tempo (BPM).** Set this to match the track you plan to add in TikTok, and the cuts will line up with it.
+* **Wide photos.** Fill the frame with a pan, or show the whole photo against a blurred background.
+
+**On music.** ReelGeek deliberately does not bake a track in. Adding trending audio inside TikTok or Instagram gets you better distribution than uploading a video with music already in it, and it is the only route that keeps you clear of copyright claims and muted uploads. So: post the silent file, pick a sound in the app, done. Because the cuts sit on a clean tempo grid, a track at a similar BPM lines up.
+
+The **scratch beat** checkbox adds a drum pattern the app synthesises itself from sine waves and noise. It exists so you can hear whether your cuts are landing before you post. Nothing in it is sampled or licensed from anyone, so it is yours to use, but trending audio will serve you better.
 
 ---
 
-## About the audio
+## On the one network call
 
-**ReelGeek renders silent on purpose.**
-
-On both TikTok and YouTube Shorts, attaching the platform's own trending audio
-gets you better distribution than uploading a video with music already baked in
-— and it is the only route that keeps you clear of copyright claims and muted
-uploads. So: post the silent file, pick a sound in the app, done. Because the
-cuts sit on a clean tempo grid, a track at a similar BPM lines up.
-
-The **scratch beat** checkbox adds a drum pattern this app synthesises itself
-from sine waves and noise. It exists so you can hear whether your cuts are
-landing before you post. Nothing in it is sampled or licensed from anyone, so
-it's yours to use — but trending audio will serve you better.
+Press **Check for updates** and the app asks the GitHub releases API what the newest published version is, then compares it against its own. That is the request in full. It sends no identifier, no photo, no usage data, and it happens only when you press the button. If you never press it, ReelGeek never touches the network at all.
 
 ---
 
@@ -125,34 +134,34 @@ python -m reelgeek ./my-photos -o out.mp4 \
 --pace    chill | normal | fast | frantic
 --seconds target runtime          --bpm    tempo to cut against
 --seed    change for a new edit   --preview  fast low-res draft
---wide    crop | blur             --beat   add the scratch beat
---shuffle randomise photo order   --fps    default 30
---out     output file (defaults to a dated name in your output folder)
 ```
-
-Useful for batching: loop over seeds, render five drafts, watch them, keep one.
 
 ---
 
-## How long a render takes
+## Build from source
 
-Roughly **4× the video length** on a normal laptop — a 20-second edit takes
-about 90 seconds. Preview mode is about eight times faster. Prepared photos are
-cached, so re-rolling the same set is quicker than the first render.
+You need **Python 3.9+** and **ffmpeg** on your PATH.
+
+```bash
+git clone https://github.com/techygeekshome/ReelGeek.git
+cd ReelGeek
+pip install -r requirements.txt
+python -m reelgeek --help
+```
+
+To build the Windows installer the way the release is built, see [`packaging/README.md`](packaging/README.md). The GitHub Actions workflow in `.github/workflows/build-windows.yml` does the same thing on a clean runner, so a release is always reproducible from a tag.
+
+---
 
 ## How it works
 
-Every frame is composed in Python — crop, camera move, transition, grade,
-grain, text — and piped straight into ffmpeg as raw RGB. That's slower than an
-ffmpeg filter chain but it's the reason the harder moves are possible at all:
-you can't get a whip pan with genuine directional motion blur, or an RGB-split
-glitch with displaced scanlines, out of stock filters.
+Every frame is composed in Python (crop, camera move, transition, grade, grain, text) and piped straight into ffmpeg as raw RGB. That is slower than an ffmpeg filter chain, but it is the reason the harder moves are possible at all: you cannot get a whip pan with genuine directional motion blur, or an RGB-split glitch with displaced scanlines, out of stock filters.
 
 ```
 reelgeek/
   settings.py  output folder and preferences, remembered between sessions
   presets.py   the five styles: rhythm, motion weights, transition odds, grade
-  timeline.py  photos + style -> a beat-locked shot list
+  timeline.py  photos plus style, into a beat-locked shot list
   motion.py    the camera moves
   imaging.py   easing, blurs, colour grading, framing, grain, vignette
   text.py      hook and end-card rendering
@@ -160,40 +169,26 @@ reelgeek/
   render.py    frame composition, transitions, encoding
   server.py    the local web app
   ui.html      the interface
+desktop.py     the packaged Windows entry point
+packaging/     PyInstaller spec, Inno Setup script, icon builder
 ```
 
-Want a new style? Copy an entry in `presets.py`, change the numbers, and it
-appears in the app automatically.
-
-Settings and the prepped-photo cache live in a private app folder
-(`%LOCALAPPDATA%\\ReelGeek` on Windows, `~/.reelgeek` on Linux,
-`~/Library/Application Support/ReelGeek` on macOS). Deleting that folder resets
-everything and costs you nothing but the cache.
+Want a new style? Copy an entry in `presets.py`, change the numbers, and it appears in the app. No other file needs touching.
 
 ---
 
-## One honest note
+## Support & contributing
 
-This gives good photos their best shot: a competent, on-trend edit in the right
-format with a hook in the right place. It cannot manufacture reach. What
-actually moves the numbers is the strength of your photos, the hook, posting
-consistently, and using sounds while they're still climbing. The edit is the
-part you can automate — the rest is still on you.
+Something not working, or an edit that came out wrong? **[Open an issue](https://github.com/techygeekshome/ReelGeek/issues)** and say what you did, what happened, and how many photos were in the edit. Screenshots help. Issues are read by a person.
+
+Pull requests are welcome, particularly new styles in `presets.py` and new camera moves in `motion.py`.
 
 ## Support
 
-Found a bug or have a request? [Open an issue](https://github.com/techygeekshome/ReelGeek/issues) or [get in touch](https://techygeekshome.info/contact/).
+ReelGeek is free and always will be. If it saved you an evening in a video editor, **[buy me a coffee](https://ko-fi.com/techygeekshome)**.
 
-## Status and licence
+## Licence
 
-ReelGeek is in development and has not had a public release yet, so there is no version number to quote and no download to point at. It is released under the GNU General Public License v3.0 — the full text is in [LICENSE](LICENSE).
+GPL-3.0. See [LICENSE](LICENSE).
 
----
-
-<div align="center">
-
-Made with ❤️ by [**TechyGeeksHome**](https://techygeekshome.info)
-
-[Website](https://techygeekshome.info) · [YouTube](https://www.youtube.com/channel/UCtEuFj1SMLiuRoucD1hv8dA) · [X](https://x.com/TechyGeeks1) · [Facebook](https://www.facebook.com/techygeeks.home) · [Instagram](https://www.instagram.com/andrewarmstrongtgh/)
-
-</div>
+ffmpeg is bundled with the Windows build under its own licence and is not covered by the above.
