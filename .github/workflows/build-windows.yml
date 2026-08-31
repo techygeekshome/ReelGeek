@@ -2,6 +2,11 @@ name: Build Windows installer
 
 on:
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Attach the installer to this existing release tag, e.g. v1.0.0. Leave blank to just build.'
+        required: false
+        default: ''
   push:
     tags:
       - 'v*'
@@ -25,9 +30,13 @@ jobs:
       - name: Work out the version
         id: ver
         shell: pwsh
+        env:
+          INPUT_RELEASE_TAG: ${{ inputs.release_tag }}
         run: |
           if ($env:GITHUB_REF -like 'refs/tags/v*') {
             $v = $env:GITHUB_REF -replace 'refs/tags/v',''
+          } elseif ($env:INPUT_RELEASE_TAG) {
+            $v = $env:INPUT_RELEASE_TAG -replace '^v',''
           } else {
             $v = '1.0.0'
           }
@@ -88,7 +97,8 @@ jobs:
           if-no-files-found: error
 
       - name: Attach to the release
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: startsWith(github.ref, 'refs/tags/v') || inputs.release_tag != ''
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ inputs.release_tag != '' && inputs.release_tag || github.ref_name }}
           files: packaging/Output/ReelGeekSetup.exe
