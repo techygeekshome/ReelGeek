@@ -6,113 +6,199 @@
 <title>ReelGeek</title>
 <style>
   :root{
-    --bg:#0b0c10; --panel:#14161d; --panel2:#1b1e27; --line:#272b36;
-    --ink:#eef0f5; --muted:#9aa3b2; --accent:#ff2e5a; --accent2:#7c5cff;
-    --ok:#2ecc8f; --radius:14px;
+    /* TechyGeeksHome house tokens */
+    --navy:#0A0D16; --chrome:#0C111C; --panel:#111725; --panel2:#161D2E;
+    --panel-hover:#141B2A; --selected:#12203A;
+    --line:#242D42; --line-soft:#1A2233; --line2:#2E3950;
+    --blue:#2E78D8; --blue-hover:#3A85E6; --blue-light:#6BA8F0;
+    --teal:#17AEB7; --green:#3BA55C; --amber:#E0A62B; --red:#D9534F;
+    --txt:#FFFFFF; --txt2:#BEC4D2; --txt3:#7C8699; --txt4:#5C6578;
+    --control-bg:#0E1421; --button-bg:#1B2333; --button-border:#2A3549;
+    --radius:7px;
+    --ui-font:"Segoe UI Variable Display","Segoe UI",Arial,sans-serif;
+    --mono-font:"Cascadia Mono",Consolas,"Courier New",monospace;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
-       font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif}
-  a{color:var(--accent)}
-  .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
-  header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
-  h1{font-size:26px;margin:0;letter-spacing:-.02em}
-  h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));
-          -webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{color:var(--muted);font-size:14px}
-  .grid{display:grid;grid-template-columns:1fr 340px;gap:20px;margin-top:22px}
+  body{margin:0;background:var(--navy);color:var(--txt);
+       font:13.5px/1.5 var(--ui-font)}
+  a{color:var(--blue-light);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* ------------------------------------------------ app header bar --- */
+  .appbar{display:flex;align-items:center;gap:12px;background:var(--chrome);
+          border-bottom:1px solid var(--line);padding:12px 26px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand .mark{width:38px;height:38px;flex:none}
+  .brand .nm{font-size:17px;font-weight:700;line-height:1.15;letter-spacing:-.01em}
+  .brand .by{font-size:11px;color:var(--txt3);line-height:1.15}
+  .appbar .spacer{margin-left:auto}
+  .appbar .tools{display:flex;align-items:center;gap:8px}
+  .ghostbtn{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+            padding:7px 10px;font-size:11px;font-family:inherit;color:var(--txt2);
+            cursor:pointer;transition:.14s;white-space:nowrap}
+  .ghostbtn:hover{border-color:var(--button-border);color:var(--txt)}
+  .verline{font-size:11px;color:var(--txt4);font-family:var(--mono-font);margin-left:4px}
+
+  /* ------------------------------------------------------- page head --- */
+  .pagehead{padding:22px 26px 15px;border-bottom:1px solid var(--line-soft)}
+  .pagehead h1{font-size:21px;font-weight:600;margin:0;letter-spacing:-.01em}
+  .pagehead .status{font-size:12.5px;color:var(--txt3);margin-top:4px}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:20px 26px 70px}
+  .sub{color:var(--txt3);font-size:12.5px}
+  .grid{display:grid;grid-template-columns:1fr 340px;gap:16px;margin-top:4px}
   @media(max-width:900px){.grid{grid-template-columns:1fr}}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
-  .card h2{font-size:13px;text-transform:uppercase;letter-spacing:.09em;
-           color:var(--muted);margin:0 0 12px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:17px}
+  .card h2{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;
+           color:var(--txt4);margin:0 0 12px}
 
   /* drop zone */
   #drop{border:2px dashed var(--line);border-radius:var(--radius);padding:34px 20px;
-        text-align:center;color:var(--muted);cursor:pointer;transition:.15s;background:var(--panel2)}
-  #drop.hot{border-color:var(--accent);color:var(--ink);background:#20141c}
-  #drop b{color:var(--ink)}
+        text-align:center;color:var(--txt3);cursor:pointer;transition:.15s;background:var(--panel2)}
+  #drop.hot{border-color:var(--blue);color:var(--txt);background:var(--selected)}
+  #drop b{color:var(--txt)}
 
   /* thumbs */
   #thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));
           gap:8px;margin-top:14px}
-  .th{position:relative;aspect-ratio:9/16;border-radius:9px;overflow:hidden;
+  .th{position:relative;aspect-ratio:9/16;border-radius:var(--radius);overflow:hidden;
       background:#000;cursor:grab;border:1px solid var(--line)}
   .th img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
-  .th .n{position:absolute;left:4px;top:4px;background:#000a;border-radius:6px;
-         font-size:11px;padding:1px 6px;font-weight:700}
+  .th .n{position:absolute;left:4px;top:4px;background:#000a;border-radius:5px;
+         font-size:11px;padding:1px 6px;font-weight:700;font-family:var(--mono-font)}
   .th .x{position:absolute;right:3px;top:3px;background:#000b;border-radius:50%;
          width:20px;height:20px;line-height:19px;text-align:center;font-size:14px;
          opacity:0;transition:.12s}
   .th:hover .x{opacity:1}
-  .th.drag{opacity:.35;outline:2px solid var(--accent)}
+  .th.drag{opacity:.35;outline:2px solid var(--blue)}
   .rowbtns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
 
   /* styles */
   .styles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-  .style{border:1px solid var(--line);background:var(--panel2);border-radius:12px;
+  .style{border:1px solid var(--line);background:var(--panel2);border-radius:var(--radius);
          padding:12px;cursor:pointer;transition:.14s}
-  .style:hover{border-color:#3b4152}
-  .style.on{border-color:var(--accent);background:#1e1420;
-            box-shadow:0 0 0 1px var(--accent) inset}
-  .style .nm{font-weight:700;margin-bottom:3px}
-  .style .bl{font-size:12px;color:var(--muted);line-height:1.42}
+  .style:hover{border-color:var(--button-border)}
+  .style.on{border-color:var(--blue);background:var(--selected);
+            box-shadow:0 0 0 1px var(--blue) inset}
+  .style .nm{font-weight:600;margin-bottom:3px}
+  .style .bl{font-size:12px;color:var(--txt3);line-height:1.42}
 
-  label.f{display:block;margin:14px 0 6px;font-size:12px;color:var(--muted);
-          text-transform:uppercase;letter-spacing:.07em}
+  label.f{display:block;margin:14px 0 6px;font-size:10.5px;color:var(--txt4);
+          text-transform:uppercase;letter-spacing:.08em;font-weight:700}
   input[type=text],select,input[type=number]{
-    width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--ink);
-    border-radius:10px;padding:10px 12px;font-size:14px;font-family:inherit}
-  input[type=text]:focus,select:focus{outline:none;border-color:var(--accent)}
+    width:100%;background:var(--control-bg);border:1px solid var(--line);color:var(--txt);
+    border-radius:var(--radius);padding:9px 11px;font-size:13.5px;font-family:inherit}
+  input[type=text]:focus,select:focus,input[type=number]:focus{outline:none;border-color:var(--blue)}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .chk{display:flex;align-items:center;gap:9px;margin-top:14px;color:var(--muted);font-size:13px}
-  .chk input{width:16px;height:16px;accent-color:var(--accent)}
+  .chk{display:flex;gap:9px;align-items:flex-start;margin-top:14px;color:var(--txt3);font-size:12.5px}
+  .chk input{width:16px;height:16px;accent-color:var(--blue);margin-top:1px;flex:none}
   .swatches{display:flex;gap:7px;margin-top:6px}
   .sw{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid transparent}
   .sw.on{border-color:#fff}
 
-  button{font-family:inherit;font-size:14px;font-weight:600;border-radius:10px;
-         border:1px solid var(--line);background:var(--panel2);color:var(--ink);
-         padding:10px 15px;cursor:pointer;transition:.14s}
-  button:hover:not(:disabled){border-color:#4a5164}
+  button{font-family:inherit;font-size:13px;font-weight:600;border-radius:var(--radius);
+         border:1px solid var(--button-border);background:var(--button-bg);color:var(--txt);
+         padding:8px 15px;cursor:pointer;transition:.14s}
+  button:hover:not(:disabled){border-color:var(--blue-light)}
   button:disabled{opacity:.45;cursor:not-allowed}
-  button.primary{background:linear-gradient(90deg,var(--accent),#ff5b3d);border:0;color:#fff}
-  button.ghost{background:transparent}
+  button.primary{background:var(--blue);border-color:var(--blue);color:#fff;min-width:96px}
+  button.primary:hover:not(:disabled){background:var(--blue-hover);border-color:var(--blue-hover)}
+  button.ghost{background:transparent;border-color:var(--line);color:var(--txt2)}
   .actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
 
   #status{margin-top:16px;display:none}
   #status.on{display:block}
-  .bar{height:7px;background:var(--panel2);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
-  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));
-         transition:width .25s}
-  .msg{font-size:13px;color:var(--muted);margin-top:8px}
-  .err{color:#ff6b6b}
+  .bar{height:4px;background:var(--line2);border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--blue-light);transition:width .3s}
+  .msg{font-size:12.5px;color:var(--txt3);margin-top:8px;font-family:var(--mono-font)}
+  .msg.err{color:var(--red)}
 
   #result{display:none;margin-top:18px}
   #result.on{display:block}
-  video{width:100%;max-width:330px;border-radius:12px;display:block;background:#000;
-        border:1px solid var(--line)}
-  .meta{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.7}
-  .meta b{color:var(--ink)}
-  ul.tips{margin:0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.65}
-  ul.tips b{color:var(--ink)}
-  .note{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6}
+  #vid{width:100%;border-radius:var(--radius);background:#000;display:block;border:1px solid var(--line)}
+  .meta{font-size:11.5px;color:var(--txt3);margin-top:9px;line-height:1.6;font-family:var(--mono-font)}
+
+  .tips{margin:0;padding-left:18px;color:var(--txt2);font-size:12.5px;line-height:1.6}
+  .tips li{margin-bottom:9px}
+  .tips b{color:var(--txt)}
+  .note{margin-top:12px;font-size:12px;color:var(--txt3);background:var(--panel2);
+        border:1px solid var(--line-soft);border-radius:var(--radius);padding:11px 13px;line-height:1.55}
+  .note.err{color:var(--red);border-color:var(--red)}
+
+  /* ------------------------------------------------------- promises --- */
+  .promise{margin-top:16px;display:flex;gap:9px;align-items:flex-start;
+           font-size:12px;color:var(--txt3);line-height:1.55}
+  .promise svg{flex:none;margin-top:1px}
+
+  /* ---------------------------------------------------------- modal --- */
+  .veil{position:fixed;inset:0;background:#000a;display:none;align-items:center;
+        justify-content:center;padding:24px;z-index:50}
+  .veil.on{display:flex}
+  .modal{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+         max-width:520px;width:100%;max-height:88vh;overflow:auto}
+  .modal .mh{display:flex;align-items:center;gap:12px;padding:17px 20px;
+             border-bottom:1px solid var(--line)}
+  .modal .mh .mark{width:38px;height:38px;flex:none}
+  .modal .mh h3{margin:0;font-size:17px;font-weight:600}
+  .modal .mh .by{font-size:11px;color:var(--txt3)}
+  .modal .mh .close{margin-left:auto}
+  .modal .mb{padding:18px 20px 20px}
+  .kv{display:grid;grid-template-columns:118px 1fr;gap:7px 14px;font-size:12.5px;margin-bottom:16px}
+  .kv dt{color:var(--txt4)}
+  .kv dd{margin:0;color:var(--txt2);font-family:var(--mono-font)}
+  .kv dd.plain{font-family:var(--ui-font)}
+  .modal h4{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;
+            color:var(--txt4);margin:16px 0 8px}
+  .modal p{font-size:12.5px;color:var(--txt2);line-height:1.6;margin:0 0 10px}
+  .linkrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .badge{display:inline-block;border-radius:5px;padding:3px 7px;font-size:10.5px;font-weight:700}
+  .badge.ok{background:#3BA55C22;color:var(--green)}
+  .badge.new{background:#E0A62B22;color:var(--amber)}
+  .badge.off{background:#7C869922;color:var(--txt3)}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <h1>Reel<span>Geek</span></h1>
-    <div class="sub">Photos in, vertical edit out — 1080×1920, cut to a beat grid.</div>
-  </header>
 
+<!-- ============================================================ chrome -->
+<div class="appbar">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+      <rect width="38" height="38" rx="9" fill="#12203A"/>
+      <rect x="7.5" y="10" width="23" height="18" rx="3.5" stroke="#6BA8F0" stroke-width="1.8"/>
+      <path d="M16.5 15.2v7.6l6.4-3.8z" fill="#2E78D8"/>
+      <circle cx="11.4" cy="13.6" r="1.1" fill="#17AEB7"/>
+      <circle cx="11.4" cy="24.4" r="1.1" fill="#17AEB7"/>
+      <circle cx="26.6" cy="13.6" r="1.1" fill="#17AEB7"/>
+      <circle cx="26.6" cy="24.4" r="1.1" fill="#17AEB7"/>
+    </svg>
+    <div>
+      <div class="nm">ReelGeek</div>
+      <div class="by">by TechyGeeksHome</div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="tools">
+    <button class="ghostbtn" id="btnUpdate">Check for updates</button>
+    <button class="ghostbtn" id="btnSupport">Support</button>
+    <button class="ghostbtn" id="btnAbout">About</button>
+    <span class="verline" id="verline">v1.0.0</span>
+  </div>
+</div>
+
+<div class="pagehead">
+  <h1>Create a reel</h1>
+  <div class="status" id="pagestatus">Drop in two or more photos to begin. Output is 1080x1920 H.264 MP4, ready for TikTok and Shorts.</div>
+</div>
+
+<div class="wrap">
   <div class="grid">
-    <!-- ============================ left ============================ -->
+    <!-- ============================================================ left -->
     <div>
       <div class="card">
-        <h2>1 · Photos</h2>
+        <h2>1 &middot; Photos</h2>
         <div id="drop">
           <b>Drop photos here</b> or click to choose<br>
-          <span style="font-size:13px">JPG, PNG, WEBP · 2 or more · order = edit order</span>
+          <span style="font-size:12px">JPG, PNG, WEBP &middot; 2 or more &middot; order is edit order</span>
         </div>
         <div id="thumbs"></div>
         <div class="rowbtns">
@@ -123,12 +209,12 @@
         </div>
       </div>
 
-      <div class="card" style="margin-top:20px">
-        <h2>2 · Style</h2>
+      <div class="card" style="margin-top:16px">
+        <h2>2 &middot; Style</h2>
         <div class="styles" id="styles"></div>
       </div>
 
-      <div class="card" style="margin-top:20px">
+      <div class="card" style="margin-top:16px">
         <h2>Before you post</h2>
         <ul class="tips">
           <li><b>Add trending audio in the app, not here.</b> Native sound gets better
@@ -137,21 +223,34 @@
               will lock on.</li>
           <li><b>The first second decides everything.</b> Lead with your strongest
               photo and a hook line people have to resolve.</li>
-          <li><b>Post the same edit to both platforms</b> — the 1080×1920 file works
+          <li><b>Post the same edit to both platforms.</b> The 1080x1920 file works
               as-is for TikTok and YouTube Shorts.</li>
           <li><b>Re-roll before you settle.</b> Same photos, new seed, different edit.
               Pick the one that feels best.</li>
         </ul>
         <div class="note">Worth saying plainly: this controls the craft, not the
-          algorithm. A good edit gives good photos their best chance — it can't
+          algorithm. A good edit gives good photos their best chance. It cannot
           manufacture reach on its own.</div>
+
+        <div class="promise">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 1.5 2.5 3.8v4c0 3.4 2.3 6.1 5.5 6.9 3.2-.8 5.5-3.5 5.5-6.9v-4L8 1.5Z"
+                  stroke="#3BA55C" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="m5.6 8 1.7 1.7 3.2-3.4" stroke="#3BA55C" stroke-width="1.3"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>What ReelGeek will not do: it never uploads your photos, never posts on
+            your behalf, and never sends anything anywhere. Every frame is rendered on
+            this PC. The only time it touches the internet is when you press Check for
+            updates.</span>
+        </div>
       </div>
     </div>
 
-    <!-- ============================ right =========================== -->
+    <!-- =========================================================== right -->
     <div>
       <div class="card">
-        <h2>3 · Settings</h2>
+        <h2>3 &middot; Settings</h2>
 
         <label class="f">Hook text (first 2 seconds)</label>
         <input type="text" id="hook" placeholder="e.g. POV: you found the one" maxlength="70">
@@ -202,13 +301,13 @@
 
         <div class="chk">
           <input type="checkbox" id="beat">
-          <label for="beat">Add a synthesised scratch beat (for checking timing —
-            mute it and use trending audio when you post)</label>
+          <label for="beat">Add a synthesised scratch beat, for checking timing. Mute it
+            and use trending audio when you post.</label>
         </div>
 
         <label class="f">Save videos to</label>
         <div style="display:flex;gap:8px">
-          <input type="text" id="outdir" placeholder="loading…">
+          <input type="text" id="outdir" placeholder="loading...">
           <button id="saveout" style="white-space:nowrap">Save</button>
         </div>
         <div class="note" id="outnote"></div>
@@ -216,12 +315,12 @@
         <div class="actions">
           <button class="primary" id="go">Render HD</button>
           <button id="prev">Quick preview</button>
-          <button class="ghost" id="reroll" title="Same photos, different edit">Re-roll ⟳</button>
+          <button class="ghost" id="reroll" title="Same photos, different edit">Re-roll &#10227;</button>
         </div>
 
         <div id="status">
           <div class="bar"><i id="fill"></i></div>
-          <div class="msg" id="msg">Starting…</div>
+          <div class="msg" id="msg">Starting...</div>
         </div>
 
         <div id="result">
@@ -236,7 +335,89 @@
   </div>
 </div>
 
+<!-- ============================================================= about -->
+<div class="veil" id="aboutVeil">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="About ReelGeek">
+    <div class="mh">
+      <svg class="mark" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+        <rect width="38" height="38" rx="9" fill="#12203A"/>
+        <rect x="7.5" y="10" width="23" height="18" rx="3.5" stroke="#6BA8F0" stroke-width="1.8"/>
+        <path d="M16.5 15.2v7.6l6.4-3.8z" fill="#2E78D8"/>
+        <circle cx="11.4" cy="13.6" r="1.1" fill="#17AEB7"/>
+        <circle cx="11.4" cy="24.4" r="1.1" fill="#17AEB7"/>
+        <circle cx="26.6" cy="13.6" r="1.1" fill="#17AEB7"/>
+        <circle cx="26.6" cy="24.4" r="1.1" fill="#17AEB7"/>
+      </svg>
+      <div>
+        <h3>ReelGeek</h3>
+        <div class="by">by TechyGeeksHome</div>
+      </div>
+      <button class="ghostbtn close" data-close="1">Close</button>
+    </div>
+    <div class="mb">
+      <dl class="kv">
+        <dt>Version</dt><dd id="aboutVer">1.0.0</dd>
+        <dt>Latest release</dt><dd id="aboutLatest">not checked</dd>
+        <dt>Author</dt><dd class="plain">Andy Armstrong</dd>
+        <dt>Licence</dt><dd class="plain">GPL-3.0</dd>
+        <dt>Video engine</dt><dd class="plain">ffmpeg (bundled, LGPL build)</dd>
+      </dl>
+
+      <h4>What it does</h4>
+      <p>Turns a folder of photos into a vertical edit. Cuts land on a tempo grid, the
+        camera moves on every shot, and the transitions are the ones short-form editors
+        actually use. Output is 1080x1920 H.264 MP4.</p>
+
+      <h4>What it will not do</h4>
+      <p>No account, no upload, no telemetry, nothing bundled. Your photos never leave
+        this PC and neither do your renders. The only outbound request the app ever makes
+        is the update check, and only when you ask for it.</p>
+
+      <div class="linkrow">
+        <button class="ghostbtn" data-open="https://techygeekshome.info/reelgeek/">Product page</button>
+        <button class="ghostbtn" data-open="https://github.com/techygeekshome/ReelGeek">Source on GitHub</button>
+        <button class="ghostbtn" data-open="https://github.com/techygeekshome/ReelGeek/issues">Report a problem</button>
+        <button class="ghostbtn" data-open="https://ko-fi.com/techygeekshome">Buy me a coffee</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================== support -->
+<div class="veil" id="supportVeil">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Support">
+    <div class="mh">
+      <div><h3>Support</h3><div class="by">ReelGeek</div></div>
+      <button class="ghostbtn close" data-close="1">Close</button>
+    </div>
+    <div class="mb">
+      <h4>Something not working</h4>
+      <p>Open an issue on GitHub. Say what you did, what happened, and how many photos
+        were in the edit. Screenshots help. Issues are read by a person, not a bot.</p>
+
+      <h4>Render failed or the video looks wrong</h4>
+      <p>Try Quick preview first: it renders in a few seconds and tells you whether the
+        problem is the settings or the photos. Very large photos are downscaled
+        automatically, so size is rarely the cause.</p>
+
+      <h4>The edit is not landing on the beat</h4>
+      <p>Set Tempo to the BPM of the track you plan to add, then re-roll. Auto length lets
+        the style choose its own runtime, which is usually the best starting point.</p>
+
+      <div class="linkrow">
+        <button class="ghostbtn" data-open="https://github.com/techygeekshome/ReelGeek/issues/new">Open an issue</button>
+        <button class="ghostbtn" data-open="https://techygeekshome.info/reelgeek/">Product page</button>
+        <button class="ghostbtn" data-open="https://techygeekshome.info/">All our free tools</button>
+        <button class="ghostbtn" data-open="https://ko-fi.com/techygeekshome">Buy me a coffee</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+const APP_VERSION = '1.0.0';
+const REPO = 'techygeekshome/ReelGeek';
+
 const $ = s => document.querySelector(s);
 let photos = [];              // {id,file,url,uploaded}
 let style  = 'hype';
@@ -313,7 +494,7 @@ function paint(){
     <div class="th" draggable="true" data-i="${i}">
       <img src="${p.url}" alt="">
       <div class="n">${i+1}</div>
-      <div class="x" data-del="${i}">×</div>
+      <div class="x" data-del="${i}">&times;</div>
     </div>`).join('');
   $('#count').textContent = photos.length ? `${photos.length} photos` : '';
   $('#go').disabled = $('#prev').disabled = photos.length < 2;
@@ -396,9 +577,9 @@ async function check(){
   const i = j.info;
   $('#vid').src = '/api/video?id='+jobId+'&t='+Date.now();
   $('#meta').innerHTML =
-    `<b>${i.width}×${i.height}</b> · ${i.seconds}s · ${i.fps}fps · ${i.shots} shots · `+
-    `${i.bpm} BPM · rendered in ${i.render_seconds}s`+
-    (j.preview ? ' · <b>preview quality</b>' : '') +
+    `<b>${i.width}x${i.height}</b> &middot; ${i.seconds}s &middot; ${i.fps}fps &middot; ${i.shots} shots &middot; `+
+    `${i.bpm} BPM &middot; rendered in ${i.render_seconds}s`+
+    (j.preview ? ' &middot; <b>preview quality</b>' : '') +
     `<br>Saved to <b>${esc(i.path)}</b>`;
   $('#result').classList.add('on');
   $('#dl').onclick = ()=>location.href = '/api/download?id='+jobId;
@@ -406,6 +587,69 @@ async function check(){
 
 $('#go').onclick   = ()=>start(false);
 $('#prev').onclick = ()=>start(true);
+
+/* ------------------------------------------------- about and support --- */
+$('#verline').textContent = 'v' + APP_VERSION;
+$('#aboutVer').textContent = APP_VERSION;
+
+function openVeil(el){ el.classList.add('on'); }
+function closeVeils(){ document.querySelectorAll('.veil').forEach(v=>v.classList.remove('on')); }
+
+$('#btnAbout').onclick   = ()=>openVeil($('#aboutVeil'));
+$('#btnSupport').onclick = ()=>openVeil($('#supportVeil'));
+
+document.querySelectorAll('.veil').forEach(v=>{
+  v.addEventListener('click', e=>{ if(e.target === v) closeVeils(); });
+});
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick = closeVeils);
+document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeVeils(); });
+document.querySelectorAll('[data-open]').forEach(b=>b.onclick = ()=>{
+  window.open(b.dataset.open, '_blank', 'noopener');
+});
+
+/* ------------------------------------------------------ update check --- */
+function cmpVer(a,b){
+  const pa = String(a).replace(/^v/,'').split('.').map(n=>parseInt(n,10)||0);
+  const pb = String(b).replace(/^v/,'').split('.').map(n=>parseInt(n,10)||0);
+  for(let i=0;i<Math.max(pa.length,pb.length);i++){
+    const x = pa[i]||0, y = pb[i]||0;
+    if(x !== y) return x > y ? 1 : -1;
+  }
+  return 0;
+}
+
+async function checkUpdates(quiet){
+  const btn = $('#btnUpdate');
+  const old = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Checking...';
+  try{
+    const r = await fetch('https://api.github.com/repos/'+REPO+'/releases/latest',
+                          {headers:{'Accept':'application/vnd.github+json'}});
+    if(!r.ok) throw new Error('GitHub returned ' + r.status);
+    const d = await r.json();
+    const latest = String(d.tag_name || '').replace(/^v/,'');
+    $('#aboutLatest').textContent = latest || 'unknown';
+    if(latest && cmpVer(latest, APP_VERSION) > 0){
+      $('#pagestatus').innerHTML =
+        '<span class="badge new">Update available</span> Version ' + esc(latest) +
+        ' is out. <a href="' + esc(d.html_url) + '" target="_blank" rel="noopener">See what changed</a>.';
+      openVeil($('#aboutVeil'));
+    }else if(!quiet){
+      $('#pagestatus').innerHTML =
+        '<span class="badge ok">Up to date</span> You are running the latest version.';
+    }
+  }catch(e){
+    $('#aboutLatest').textContent = 'check failed';
+    if(!quiet){
+      $('#pagestatus').innerHTML =
+        '<span class="badge off">Could not check</span> No answer from GitHub. Try again later.';
+    }
+  }finally{
+    btn.disabled = false; btn.textContent = old;
+  }
+}
+$('#btnUpdate').onclick = ()=>checkUpdates(false);
+
 paint();
 </script>
 </body>
