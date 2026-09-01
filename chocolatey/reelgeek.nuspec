@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>reelgeek</id>
+    <version>1.0.0</version>
+    <title>ReelGeek</title>
+    <authors>TechyGeeksHome</authors>
+    <owners>techygeekshome</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">GPL-3.0-or-later</license>
+    <projectUrl>https://techygeekshome.info/reelgeek/</projectUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/techygeekshome/ReelGeek@main/icons/reelgeek-256.png</iconUrl>
+    <description>ReelGeek turns a folder of photographs into a vertical video edit on your own machine.
+It builds a real edit rather than a slideshow, and nothing is uploaded anywhere.
+
+* Cuts the shots against a tempo grid instead of fading on a timer
+* Gives every shot its own camera move and picks a transition to get out of it
+* Renders 1080x1920 H.264 MP4, ready to upload to TikTok or YouTube Shorts
+* Reads from disk and renders on the processor, so no graphics card is needed
+* No account, no watermark, no export limit
+
+Open source under GPL-3.0. Python and ffmpeg are inside the installer, so there is nothing to
+install first.</description>
+    <summary>Free offline photo to vertical video maker for Windows, cut to a beat grid</summary>
+    <releaseNotes>https://github.com/techygeekshome/ReelGeek/releases/tag/v1.0.0</releaseNotes>
+    <copyright>Copyright (c) 2026 TechyGeeksHome</copyright>
+    <tags>reelgeek video reels shorts tiktok slideshow photos offline windows foss</tags>
+    <projectSourceUrl>https://github.com/techygeekshome/ReelGeek</projectSourceUrl>
+    <packageSourceUrl>https://github.com/techygeekshome/ReelGeek</packageSourceUrl>
+    <docsUrl>https://techygeekshome.info/reelgeek/</docsUrl>
+    <bugTrackerUrl>https://github.com/techygeekshome/ReelGeek/issues</bugTrackerUrl>
+  </metadata>
+</package>
