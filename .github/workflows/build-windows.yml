@@ -89,11 +89,22 @@ jobs:
           $inst = Get-Item packaging\Output\ReelGeekSetup.exe
           Write-Host ("Installer is {0:N1} MB" -f ($inst.Length / 1MB))
 
+      - name: Write the checksums
+        shell: pwsh
+        run: |
+          Push-Location packaging\Output
+          $h = Get-FileHash ReelGeekSetup.exe -Algorithm SHA256
+          "$($h.Hash.ToLower())  ReelGeekSetup.exe" | Out-File -FilePath SHA256SUMS.txt -Encoding ascii
+          Get-Content SHA256SUMS.txt
+          Pop-Location
+
       - name: Upload the installer
         uses: actions/upload-artifact@v4
         with:
           name: ReelGeek-Windows-${{ steps.ver.outputs.version }}
-          path: packaging/Output/ReelGeekSetup.exe
+          path: |
+            packaging/Output/ReelGeekSetup.exe
+            packaging/Output/SHA256SUMS.txt
           if-no-files-found: error
 
       - name: Attach to the release
@@ -101,4 +112,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ inputs.release_tag != '' && inputs.release_tag || github.ref_name }}
-          files: packaging/Output/ReelGeekSetup.exe
+          files: |
+            packaging/Output/ReelGeekSetup.exe
+            packaging/Output/SHA256SUMS.txt
