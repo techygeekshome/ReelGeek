@@ -7,7 +7,7 @@
     <authors>TechyGeeksHome</authors>
     <owners>techygeekshome</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <license type="expression">GPL-3.0-or-later</license>
+    <licenseUrl>https://github.com/techygeekshome/ReelGeek/blob/main/LICENSE</licenseUrl>
     <projectUrl>https://techygeekshome.info/reelgeek/</projectUrl>
     <iconUrl>https://cdn.jsdelivr.net/gh/techygeekshome/ReelGeek@main/icons/reelgeek-256.png</iconUrl>
     <description>ReelGeek turns a folder of photographs into a vertical video edit on your own machine.
