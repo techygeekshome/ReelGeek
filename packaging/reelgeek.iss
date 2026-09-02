@@ -26,6 +26,7 @@ LicenseFile=..\LICENSE
 OutputDir=Output
 OutputBaseFilename=ReelGeekSetup
 SetupIconFile=reelgeek.ico
+VersionInfoDescription={#MyAppName} installer
 UninstallDisplayName={#MyAppName} {#MyAppVersion}
 UninstallDisplayIcon={app}\{#MyAppExeName}
 Compression=lzma2/max
