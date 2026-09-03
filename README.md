@@ -19,6 +19,14 @@
 
 ---
 
+## 🎬 See it in action
+
+[![ReelGeek demo video](https://img.youtube.com/vi/aRIQr_0RMGg/maxresdefault.jpg)](https://www.youtube.com/watch?v=aRIQr_0RMGg)
+
+Photos in, a finished vertical edit out, in under a minute.
+
+---
+
 ## What it refuses to do
 
 * **No account.** There is nothing to sign up for and nothing to log in to.
